@@ -7,9 +7,30 @@ const Page = () => {
     <main>
       <h1 className="text-2xl underline">Popular Companions</h1>
       <section className="home-section">
-        <CompanionCard />
-        <CompanionCard />
-        <CompanionCard />
+        <CompanionCard
+          id="123"
+          name="Neura the Brainy Explorer"
+          topic="Neural Network of the Brain"
+          subject="science"
+          duration={45}
+          backgroundColor="#ffda6e"
+        />
+        <CompanionCard
+          id="456"
+          name="Countsy the Number Wizard"
+          topic="Derivatives & Integrals"
+          subject="maths"
+          duration={30}
+          backgroundColor="#e5d0ff"
+        />
+        <CompanionCard
+          id="789"
+          name="Verba the Vocabulary Builder"
+          topic="language"
+          subject="English literature"
+          duration={30}
+          backgroundColor="#bde7ff"
+        />
       </section>
 
       <section className="home-section">
