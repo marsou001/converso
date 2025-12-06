@@ -5,7 +5,7 @@ interface CompanionCardProps {
   id: string
   name: string
   topic: string
-  subject: string
+  subject: Subject
   duration: number
   backgroundColor: string
 }

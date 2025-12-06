@@ -12,7 +12,7 @@ import Link from "next/link"
 
 interface CompanionsListProps {
   title: string
-  companions?: Companion[]
+  companions?: Omit<Companion, "bookmarked">[]
   classNames?: string
 }
 
@@ -33,9 +33,9 @@ export default function CompanionsList(
         </TableHeader>
         <TableBody>
           {companions?.map((companion) => (
-            <TableRow key={companion.id}>
+            <TableRow key={companion.$id}>
               <TableCell className="font-medium">
-                <Link href={`/companions/${companion.id}`}>
+                <Link href={`/companions/${companion.$id}`}>
                   <div className="flex items-center gap-2">
                     <div
                       className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"

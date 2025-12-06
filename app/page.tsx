@@ -12,7 +12,7 @@ const Page = () => {
           id="123"
           name="Neura the Brainy Explorer"
           topic="Neural Network of the Brain"
-          subject="science"
+          subject={Subject.SCIENCE}
           duration={45}
           backgroundColor="#ffda6e"
         />
@@ -20,7 +20,7 @@ const Page = () => {
           id="456"
           name="Countsy the Number Wizard"
           topic="Derivatives & Integrals"
-          subject="maths"
+          subject={Subject.MATHS}
           duration={30}
           backgroundColor="#e5d0ff"
         />
@@ -28,7 +28,7 @@ const Page = () => {
           id="789"
           name="Verba the Vocabulary Builder"
           topic="language"
-          subject="English literature"
+          subject={Subject.ENGLISH_LITERATURE}
           duration={30}
           backgroundColor="#bde7ff"
         />
