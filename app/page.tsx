@@ -2,6 +2,7 @@ import CompanionCard from "@/components/CompanionCard"
 import CompanionsList from "@/components/CompanionsList"
 import Cta from "@/components/Cta"
 import { recentSessions } from "@/constants"
+import { Subject } from "@/types/enums"
 
 const Page = () => {
   return (

@@ -1,3 +1,5 @@
+import { Subject } from "@/types/enums";
+
 export const subjects = [
   "maths",
   "language",
@@ -21,7 +23,7 @@ export const voices = {
   female: { casual: "ZIlrSGI4jZqobxRKprJz", formal: "sarah" },
 };
 
-export const recentSessions = [
+export const recentSessions: Omit<Companion, "bookmarked">[] = [
   {
     $id: "1",
     subject: Subject.SCIENCE,
