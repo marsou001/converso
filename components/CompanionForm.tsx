@@ -6,7 +6,6 @@ import { useForm, Controller } from "react-hook-form"
 
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
@@ -18,11 +17,19 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Subject } from "@/types/enums"
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
-  subject: z.enum(Object.values(Subject)),
+  subject: z.enum(Object.values(Subject), "Please pick one of the available options."),
   topic: z.string().min(1, "Topic is required."),
   voice: z.string().min(1, "Voice is required."),
   style: z.string().min(1, "Style is required."),
@@ -68,33 +75,31 @@ export default function CompanionForm() {
             </Field>
           )}
         />
+        
         <Controller
-          name="topic"
+          name="subject"
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="form-rhf-demo-description">
-                Description
+              <FieldLabel htmlFor="subject">
+                Subject
               </FieldLabel>
-              <InputGroup>
-                <InputGroupTextarea
-                  {...field}
-                  id="form-rhf-demo-description"
-                  placeholder="I'm having an issue with the login button on mobile."
-                  rows={6}
-                  className="min-h-24 resize-none"
-                  aria-invalid={fieldState.invalid}
-                />
-                <InputGroupAddon align="block-end">
-                  <InputGroupText className="tabular-nums">
-                    {field.value.length}/100 characters
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-              <FieldDescription>
-                Include steps to reproduce, expected behavior, and what
-                actually happened.
-              </FieldDescription>
+              <Select
+                name={field.name}
+                value={field.value}
+                onValueChange={field.onChange}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a subject" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {Object.values(Subject).map((subject) => (
+                      <SelectItem key={subject} value={subject}>{ subject }</SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
               )}
