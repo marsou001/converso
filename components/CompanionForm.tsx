@@ -106,6 +106,30 @@ export default function CompanionForm() {
             </Field>
           )}
         />
+
+        <Controller
+          name="topic"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="topic">
+                What should the companion help with?
+              </FieldLabel>
+              <InputGroup>
+                <InputGroupTextarea
+                  {...field}
+                  id="topic"
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Ex. Derivative & Integrals"
+                  autoComplete="off"
+                />
+              </InputGroup>
+              {fieldState.invalid && (
+                <FieldError errors={[fieldState.error]} />
+              )}
+            </Field>
+          )}
+        />
       </FieldGroup>
     </form>
   )
