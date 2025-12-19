@@ -60,7 +60,7 @@ export default function CompanionForm() {
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="name">
-                Bug Title
+                Name
               </FieldLabel>
               <Input
                 {...field}
