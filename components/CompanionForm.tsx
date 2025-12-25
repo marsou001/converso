@@ -32,7 +32,7 @@ const formSchema = z.object({
   subject: z.enum(Object.values(Subject), "Please pick one of the available options."),
   topic: z.string().min(1, "Topic is required."),
   voice: z.string().min(1, "Voice is required."),
-  style: z.string().min(1, "Style is required."),
+  tone: z.string().min(1, "Tone is required."),
 })
 
 export default function CompanionForm() {
@@ -43,7 +43,7 @@ export default function CompanionForm() {
       subject: Subject.MATHS,
       topic: "",
       voice: "",
-      style: "",
+      tone: "",
     },
   })
  
@@ -162,20 +162,20 @@ export default function CompanionForm() {
         />
         
         <Controller
-          name="style"
+          name="tone"
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="style">
-                Style
+              <FieldLabel htmlFor="tone">
+                Tone
               </FieldLabel>
               <Select
                 name={field.name}
                 value={field.value}
                 onValueChange={field.onChange}
               >
-                <SelectTrigger id="style">
-                  <SelectValue placeholder="Your companion's style" />
+                <SelectTrigger id="tone">
+                  <SelectValue placeholder="Your companion's tone" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
