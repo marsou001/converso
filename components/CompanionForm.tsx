@@ -193,8 +193,8 @@ export default function CompanionForm() {
         />
       </FieldGroup>
 
-      <Button type="submit" className="mt-8 w-full cursor-pointer">
-        Submit
+      <Button type="submit" className="capitalize mt-8 w-full cursor-pointer">
+        Build Your Companion
       </Button>
     </form>
   )
