@@ -31,8 +31,8 @@ const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
   subject: z.enum(Object.values(Subject), "Please pick one of the available options."),
   topic: z.string().min(1, "Topic is required."),
-  voice: z.string().min(1, "Voice is required."),
-  tone: z.string().min(1, "Tone is required."),
+  voice: z.enum(["male", "female"], "Voice is required."),
+  tone: z.enum(["formal", "casual"], "Tone is required."),
 })
 
 export default function CompanionForm() {
@@ -42,8 +42,8 @@ export default function CompanionForm() {
       name: "",
       subject: Subject.MATHS,
       topic: "",
-      voice: "",
-      tone: "",
+      voice: "male",
+      tone: "formal",
     },
   })
  
