@@ -26,6 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Subject } from "@/types/enums"
+import { Button } from "./ui/button"
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -191,6 +192,10 @@ export default function CompanionForm() {
           )}
         />
       </FieldGroup>
+
+      <Button type="submit" className="mt-8 w-full cursor-pointer">
+        Submit
+      </Button>
     </form>
   )
 }
