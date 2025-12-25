@@ -34,6 +34,7 @@ const formSchema = z.object({
   topic: z.string().min(1, "Topic is required."),
   voice: z.enum(["male", "female"], "Voice is required."),
   tone: z.enum(["formal", "casual"], "Tone is required."),
+  duration: z.coerce.number<number>().min(5, "Companion's session should last at least 5 minutes"),
 })
 
 export default function CompanionForm() {
@@ -45,6 +46,7 @@ export default function CompanionForm() {
       topic: "",
       voice: "male",
       tone: "formal",
+      duration: 15,
     },
   })
  
@@ -185,6 +187,30 @@ export default function CompanionForm() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+              {fieldState.invalid && (
+                <FieldError errors={[fieldState.error]} />
+              )}
+            </Field>
+          )}
+        />
+
+        <Controller
+          name="duration"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="duration">
+                Estimated session duration in minutes
+              </FieldLabel>
+              <Input
+                {...field}
+                id="duration"
+                type="number"
+                aria-invalid={fieldState.invalid}
+                placeholder="15"
+                min={5}
+                autoComplete="off"
+              />
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
               )}
