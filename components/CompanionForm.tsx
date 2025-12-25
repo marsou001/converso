@@ -160,6 +160,36 @@ export default function CompanionForm() {
             </Field>
           )}
         />
+        
+        <Controller
+          name="style"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="style">
+                Style
+              </FieldLabel>
+              <Select
+                name={field.name}
+                value={field.value}
+                onValueChange={field.onChange}
+              >
+                <SelectTrigger id="style">
+                  <SelectValue placeholder="Your companion's style" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="formal">Formal</SelectItem>
+                    <SelectItem value="casual">Casual</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {fieldState.invalid && (
+                <FieldError errors={[fieldState.error]} />
+              )}
+            </Field>
+          )}
+        />
       </FieldGroup>
     </form>
   )
